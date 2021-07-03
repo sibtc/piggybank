@@ -2,9 +2,11 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import OrderingFilter, SearchFilter
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
+from rest_framework_xml.renderers import XMLRenderer
 
 from core.models import Category, Currency, Transaction
 from core.reports import transaction_report
@@ -22,6 +24,7 @@ class CurrencyListAPIView(ListAPIView):
     queryset = Currency.objects.all()
     serializer_class = CurrencySerializer
     pagination_class = None
+    renderer_classes = [JSONRenderer, XMLRenderer]
 
 
 class CategoryModelViewSet(ModelViewSet):
