@@ -3,9 +3,9 @@ from dataclasses import dataclass
 from decimal import Decimal
 
 from django.contrib.auth.models import User
-from django.db.models import Sum, Count, Avg
+from django.db.models import Avg, Count, Sum
 
-from core.models import Transaction, Category
+from core.models import Category, Transaction
 
 
 @dataclass
